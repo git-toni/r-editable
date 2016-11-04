@@ -1,0 +1,51 @@
+{
+  "name": "r-editable",
+  "version": "0.1.0",
+  "description": "Simple editable field for React, supporting several input types",
+  "main": "dist/r-editable.js",
+  "dependencies": {},
+  "devDependencies": {
+    "ava": "^0.16.0",
+    "babel-core": "^6.17.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "enzyme": "^2.4.1",
+    "git-prepush-hook": "^1.0.1",
+    "react": "^15.3.2",
+    "react-addons-test-utils": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.2"
+  },
+  "scripts": {
+    "test": "ava 'tests/**/*_test.js' --verbose",
+    "jestest": "jest --",
+    "watch:test": "npm run test -- --watch",
+    "dist:all": "npm run dist:build && npm run dist:build-min",
+    "dist:build": "webpack --config webpack.config.js",
+    "dist:build-min": "webpack --config webpack.config.min.js"
+  },
+  "ava": {
+    "require": [
+      "babel-register"
+    ],
+    "babel": "inherit"
+  },
+  "author": "Toni Urcola <unmail.toni@gmail.com> (https://github.com/git-toni)",
+  "jest": {
+    "collectCoverage": true,
+    "moduleFileExtensions": [
+      "js",
+      "json"
+    ],
+    "moduleDirectories": [
+      "node_modules"
+    ]
+  },
+  "license": "ISC",
+  "pre-push": [
+    "test",
+    "dist:all"
+  ]
+}
