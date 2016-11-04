@@ -25,22 +25,18 @@ test('when clicked turns into select with passed options', t => {
   t.is(wrapper.find('option').length, myOpt.length)
   t.is(wrapper.find('select').props().value, defVal.value)
 });
-/*
-test('when clicked we can edit input', t => {
-  const newVal = 'Hola'
-  wrapper.simulate('click')
-  wrapper.simulate('change',{target:{value:newVal}})
-  t.is(wrapper.find('span').length, 0)
-  t.is(wrapper.find('input').length, 1)
-  t.is(wrapper.find('input').props().value, newVal)
-});
 test('when clicked, edited, then Blur renders back span', t => {
-  const newVal = 'Hola'
+  const newVal = {name:'Orange',value:'orange'}
   wrapper.simulate('click')
-  wrapper.simulate('change',{target:{value:newVal}})
+  wrapper.simulate('change',{target:{value:newVal.value}})
   wrapper.simulate('blur')
   t.is(wrapper.find('span').length, 1)
-  t.is(wrapper.find('input').length, 0)
-  t.is(wrapper.find('span').text(), newVal)
+  t.is(wrapper.find('select').length, 0)
+  t.is(wrapper.find('option').length, 0)
+  t.is(wrapper.find('span').text(), newVal.name)
 });
-*/
+test('no params renders empty select', t => {
+  const emptyWrapper = shallow(<REditable type='dropdown' options={myOpt} />);
+  t.is(emptyWrapper.find('span').length, 2)
+  t.is(emptyWrapper.text(), 'Empty')
+});

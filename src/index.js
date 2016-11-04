@@ -5,8 +5,9 @@ class REditable extends React.Component{
     super(props)
     this.state={
       isEditing: false,
-      value: props.value || 'jftlols',
+      value: props.value || undefined,
       type: props.type || 'input',
+      placeholder: props.placeholder || 'Select one'
     }
     Array('_onClick','_onChange','_onBlur').forEach( f => this[f]=this[f].bind(this))
   }
@@ -37,7 +38,13 @@ class REditable extends React.Component{
   }
   renderValue(){
     switch(this.state.type){
-      case 'dropdown': return this.props.options.filter(e => e.value===this.state.value)[0].name
+      case 'dropdown': 
+        if(this.state.value){
+          return this.props.options.filter(e => e.value===this.state.value)[0].name
+        }
+        else{
+          return <span className='empty-placeholder'>Empty</span>
+        }
       default: return this.state.value
     }
   }
