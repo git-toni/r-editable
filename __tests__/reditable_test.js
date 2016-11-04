@@ -23,10 +23,11 @@ describe('Input type', () => {
   describe('when clicked and edited',()=>{
     const newVal = 'Hola'
     it('renders an input with newvalue value',()=>{
-      wrapper.simulate('click')
-      expect(wrapper.find('span').length).toEqual(0)
-      expect(wrapper.find('input').length).toEqual(1)
-      expect(wrapper.find('input').props().value).toEqual(defVal)
+      //wrapper.find('span').simulate('click')
+      wrapper.find('input').simulate('change',{target:{value:newVal}})
+      console.log(wrapper.html())
+      //expect(wrapper.find('input').props().value).toEqual(newVal)
+      expect(true).toEqual(newVal)
     })
   })
 });
