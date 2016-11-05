@@ -34,16 +34,6 @@
     "babel": "inherit"
   },
   "author": "Toni Urcola <unmail.toni@gmail.com> (https://github.com/git-toni)",
-  "jest": {
-    "collectCoverage": true,
-    "moduleFileExtensions": [
-      "js",
-      "json"
-    ],
-    "moduleDirectories": [
-      "node_modules"
-    ]
-  },
   "license": "ISC",
   "pre-push": [
     "test",
