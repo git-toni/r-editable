@@ -31,6 +31,7 @@ class REditable extends React.Component{
     this.setState({value: e.target.value})
   }
   _onClick(e){
+    e.stopPropagation()
     this.setState({isEditing: true})
   }
   _onBlur(e){
@@ -65,7 +66,7 @@ class REditable extends React.Component{
   }
   createInput(){
     return(
-      <input type='text' onBlur={this._onBlur} onChange={this._onChange} value={this.state.value}/>
+      <input autoFocus className='reditable' type='text' onBlur={this._onBlur} onChange={this._onChange} value={this.state.value}/>
     )
   }
 }
