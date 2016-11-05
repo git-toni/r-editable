@@ -9,11 +9,9 @@ class REditable extends React.Component{
       type: props.type || 'input',
       placeholder: props.placeholder || 'Select one'
     }
-    Array('_onClick','_onChange','_onBlur').forEach( f => this[f]=this[f].bind(this))
+    Array('_onClick','_onChange','_onBlur','_onKeyInput').forEach( f => this[f]=this[f].bind(this))
   }
   render(){
-        //{this.renderEditable()}
-    //console.log('render ',this.state)
     if(this.state.isEditing){
       return(
         this.renderEditable()
@@ -21,7 +19,7 @@ class REditable extends React.Component{
     }
     else{
       return(
-        <span className='inner-content' onClick={this._onClick}>
+        <span className='r-editable' onClick={this._onClick}>
           {this.renderValue()}
         </span>
       )
@@ -29,9 +27,9 @@ class REditable extends React.Component{
   }
   _onChange(e){
     this.setState({value: e.target.value})
+    if(this.props.onChange) this.props.onChange.call(null,e.target)
   }
   _onClick(e){
-    e.stopPropagation()
     this.setState({isEditing: true})
   }
   _onBlur(e){
@@ -64,9 +62,14 @@ class REditable extends React.Component{
       </select>
     )
   }
+  _onKeyInput(e){
+    if (e.key === 'Enter') {
+      this.setState({isEditing: false})
+    }
+  }
   createInput(){
     return(
-      <input autoFocus className='reditable' type='text' onBlur={this._onBlur} onChange={this._onChange} value={this.state.value}/>
+      <input autoFocus className='r-editable' type='text' onBlur={this._onBlur} onChange={this._onChange} value={this.state.value} onKeyPress={this._onKeyInput}/>
     )
   }
 }

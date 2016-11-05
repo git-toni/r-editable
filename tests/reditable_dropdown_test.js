@@ -40,3 +40,19 @@ test('no params renders empty select', t => {
   t.is(emptyWrapper.find('span').length, 2)
   t.is(emptyWrapper.text(), 'Empty')
 });
+
+test('calls passed onChange prop function"', t => {
+  const newVal = 'Hola'
+  let setMeValue=0
+  let myOnChange=(function(obj){
+    setMeValue=obj.value
+  }).bind(setMeValue)
+
+  const wrOnChange = shallow(<REditable type='dropdown' onChange={myOnChange} options={myOpt} />);
+  wrOnChange.simulate('click')
+  const sel = wrOnChange.find('select')
+  sel.simulate('change',{target:{value:newVal}})
+
+  t.is(setMeValue,newVal,'Parent onChange function was not called')
+});
+
