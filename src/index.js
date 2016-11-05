@@ -55,9 +55,9 @@ class REditable extends React.Component{
   }
   createDropdown(){
     return(
-      <select value={this.state.value} onChange={this._onChange} onBlur={this._onBlur} >
+      <select className='r-editable' value={this.state.value} onChange={this._onChange} onBlur={this._onBlur} >
       {
-        this.props.options.map( el  => <option value={el.value}>{el.name}</option>)
+        this.props.options.map( el  => <option key={el.value} value={el.value}>{el.name}</option>)
       }
       </select>
     )

@@ -8,12 +8,21 @@
       body{
         font-family: 'Lato',sans-serif;
         padding: 40px;
-        background: pink;
         box-sizing: border-box;
       } 
+      hr{
+        border: 1px solid #8f8f8f;
+      }
+      h2{
+        color: #79BD9A;
+      }
+      h3{
+        color: #79BD9A;
+      }
       span.r-editable{
         font-size: 1em;
         width: auto;
+        border-bottom: 2px dashed red;
       }
       input.r-editable{
         background: #C5F0DA;
@@ -24,6 +33,13 @@
         padding:0;
         margin:0;
       }
+      select.r-editable{
+        font-size: 1em;
+        background: white;
+      }
+      div[id^='re-'] div.examples{
+        margin-left: 2em;
+      }
 
 
     </style>
@@ -31,9 +47,11 @@
   <body>
   <div>
     <h2>R-editable examples</h2>
+    <hr/>
     <div id='app-container'>
     </div>
   </div>
+
   </body>
   <script src="dist/re-example.js"></script>
 </html>
