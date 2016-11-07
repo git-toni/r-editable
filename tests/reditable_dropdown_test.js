@@ -10,9 +10,10 @@ const myOpt = [
   {name:'Banana',value:'banana'},
   {name:'Orange',value:'orange'}
 ]
+const myId = 'myId'
 const defVal = {name:'Grape',value:'grape'}
 
-const wrapper = shallow(<REditable type='dropdown' options={myOpt} value={defVal.value}/>);
+const wrapper = shallow(<REditable type='dropdown' id={myId} options={myOpt} value={defVal.value}/>);
 
 test('default renders a span', t => {
   t.is(wrapper.find('span').length, 1)
@@ -23,6 +24,7 @@ test('when clicked turns into select with passed options', t => {
   t.is(wrapper.find('span').length, 0)
   t.is(wrapper.find('select').length, 1)
   t.is(wrapper.find('option').length, myOpt.length)
+  t.is(wrapper.find('select').props().id, myId)
   t.is(wrapper.find('select').props().value, defVal.value)
 });
 test('when clicked, edited, then Blur renders back span', t => {

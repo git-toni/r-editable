@@ -1,4 +1,5 @@
 import React from 'react'
+import omit from 'lodash/omit'
 
 class REditable extends React.Component{
   constructor(props){
@@ -54,8 +55,9 @@ class REditable extends React.Component{
     }
   }
   createDropdown(){
+    let actualProps = omit(this.props, ['onChange', 'value', 'onBlur', 'onKeyInput'])
     return(
-      <select className='r-editable' value={this.state.value} onChange={this._onChange} onBlur={this._onBlur} >
+      <select {...actualProps} className='r-editable' value={this.state.value} onChange={this._onChange} onBlur={this._onBlur} >
       {
         this.props.options.map( el  => <option key={el.value} value={el.value}>{el.name}</option>)
       }
@@ -68,8 +70,9 @@ class REditable extends React.Component{
     }
   }
   createInput(){
+    let actualProps = omit(this.props, ['onChange', 'value', 'onBlur', 'onKeyInput'])
     return(
-      <input autoFocus className='r-editable' type='text' onBlur={this._onBlur} onChange={this._onChange} value={this.state.value} onKeyPress={this._onKeyInput}/>
+      <input autoFocus {...actualProps} className='r-editable' type='text' onBlur={this._onBlur} onChange={this._onChange} value={this.state.value} onKeyPress={this._onKeyInput}/>
     )
   }
 }

@@ -5,16 +5,18 @@ import REditable from '../src'
 
 
 const defVal = 'Hello'
-const wrapper = shallow(<REditable value={defVal}/>);
+const myId = 'myId'
+const wrapper = shallow(<REditable id={myId} value={defVal}/>);
 
 test('default renders a span', t => {
   t.is(wrapper.find('span').length, 1)
   t.is(wrapper.find('span').text(), defVal)
 });
-test('when clicked turns into input', t => {
+test('when clicked turns into input with passed id', t => {
   wrapper.simulate('click')
   t.is(wrapper.find('span').length, 0)
   t.is(wrapper.find('input').length, 1)
+  t.is(wrapper.find('input').props().id, myId)
   t.is(wrapper.find('input').props().value, defVal)
 });
 test('when clicked we can edit input', t => {
