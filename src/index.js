@@ -55,7 +55,7 @@ class REditable extends React.Component{
     }
   }
   createDropdown(){
-    let actualProps = omit(this.props, ['onChange', 'value', 'onBlur', 'onKeyInput'])
+    let actualProps = omit(this.props, ['onChange', 'value', 'onBlur', 'onKeyInput','options'])
     return(
       <select {...actualProps} className='r-editable' value={this.state.value} onChange={this._onChange} onBlur={this._onBlur} >
       {
@@ -74,6 +74,9 @@ class REditable extends React.Component{
     return(
       <input autoFocus {...actualProps} className='r-editable' type='text' onBlur={this._onBlur} onChange={this._onChange} value={this.state.value} onKeyPress={this._onKeyInput}/>
     )
+  }
+  componentWillReceiveProps(nextProps){
+    this.setState({value: nextProps.value})
   }
 }
 

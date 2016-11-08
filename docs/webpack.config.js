@@ -33,7 +33,8 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
-    contentBase: './'
+    contentBase: './',
+    port: 8877
   },
   node: {
     console: true,
