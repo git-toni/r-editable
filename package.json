@@ -1,8 +1,8 @@
 {
   "name": "r-editable",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Simple editable field for React, supporting several input types",
-  "main": "dist/r-editable.js",
+  "main": "dist/r-editable.min.js",
   "dependencies": {},
   "devDependencies": {
     "ava": "^0.16.0",
