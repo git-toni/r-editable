@@ -1,6 +1,6 @@
 {
   "name": "r-editable",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Simple editable field for React, supporting several input types",
   "main": "dist/r-editable.min.js",
   "dependencies": {},
