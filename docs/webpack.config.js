@@ -10,8 +10,10 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/dist',
-    filename: 're-example.js'
+    filename: 're-example.js',
+    libraryTarget:'umd',
   },
+  devtool: 'source-map',
   module: {
     loaders: [{
       exclude: /node_modules/,
@@ -41,5 +43,19 @@ module.exports = {
     fs: 'empty',
     net: 'empty',
     tls: 'empty'
+  },
+  externals: {
+    react: {
+      root: 'React',
+      commonjs2: 'react',
+      commonjs: 'react',
+      amd: 'react'
+    },
+    'react-dom': {
+      root: 'ReactDOM',
+      commonjs2: 'react-dom',
+      commonjs: 'react-dom',
+      amd: 'react-dom'
+    }
   }
 };

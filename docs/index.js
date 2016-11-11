@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import REditable from '../src'
+//import REditable from '../src'
+import REditable from '../dist/r-editable'
 
 
 const alertMsg = (msg)=> alert(msg)

@@ -9,6 +9,7 @@ module.exports = {
     libraryTarget:'umd',
     filename: 'r-editable.js'
   },
+  devtool: 'source-map',
   module: {
     loaders: [{
       exclude: /node_modules/,
@@ -22,5 +23,19 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     contentBase: './'
+  },
+  externals: {
+    react: {
+      root: 'React',
+      commonjs2: 'react',
+      commonjs: 'react',
+      amd: 'react'
+    },
+    'react-dom': {
+      root: 'ReactDOM',
+      commonjs2: 'react-dom',
+      commonjs: 'react-dom',
+      amd: 'react-dom'
+    }
   }
 };
